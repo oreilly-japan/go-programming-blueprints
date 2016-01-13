@@ -1,6 +1,9 @@
 package trace
 
-import "io"
+import (
+	"fmt"
+	"io"
+)
 
 // Tracerはコード内での出来事を記録できるオブジェクトを表すインタフェースです。
 type Tracer interface {
@@ -15,4 +18,7 @@ type tracer struct {
 	out io.Writer
 }
 
-func (t *tracer) Trace(a ...interface{}) {}
+func (t *tracer) Trace(a ...interface{}) {
+	t.out.Write([]byte(fmt.Sprint(a...)))
+	t.out.Write([]byte("\n"))
+}
