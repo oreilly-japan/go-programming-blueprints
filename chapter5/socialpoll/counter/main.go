@@ -3,7 +3,10 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
 	"os"
+
+	"gopkg.in/mgo.v2"
 )
 
 var fatalErr error
@@ -19,4 +22,16 @@ func main() {
 			os.Exit(1)
 		}
 	}()
+	log.Println("データベースに接続します...")
+	db, err := mgo.Dial("localhost")
+	if err != nil {
+		fatal(err)
+		return
+	}
+	defer func() {
+		log.Println("データベース接続を閉じます...")
+		db.Close()
+	}()
+	pollData := db.DB("ballots").C("polls")
+
 }
