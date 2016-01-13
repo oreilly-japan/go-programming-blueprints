@@ -8,12 +8,17 @@ import (
 )
 
 type Archiver interface {
+	DestFmt() string
 	Archive(src, dest string) error
 }
 
 type zipper struct{}
 
 var ZIP Archiver = (*zipper)(nil)
+
+func (z *zipper) DestFmt() string {
+	return "%d.zip"
+}
 
 func (z *zipper) Archive(src, dest string) error {
 	if err := os.MkdirAll(filepath.Dir(dest), 0777); err != nil {
