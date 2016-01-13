@@ -19,7 +19,7 @@ type room struct {
 	// clientsには在室しているすべてのクライアントが保持されます。
 	clients map[*client]bool
 	// tracerはチャットルーム上で行われた操作のログを受け取ります。
-	tracer trace.Tracer
+	tracer *trace.Tracer
 }
 
 // newRoomはすぐに利用できるチャットルームを生成して返します。
