@@ -39,7 +39,6 @@ func TestGravatarAvatar(t *testing.T) {
 	var gravatarAvatar GravatarAvatar
 	user := &chatUser{uniqueID: "abc"}
 	url, err := gravatarAvatar.GetAvatarURL(user)
-	url, err := gravatarAvatar.GetAvatarURL(client)
 	if err != nil {
 		t.Error("GravatarAvitar.GetAvatarURLはエラーを返すべきではありません")
 	}
