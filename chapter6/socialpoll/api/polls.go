@@ -4,6 +4,7 @@ import (
 	"errors"
 	"net/http"
 
+	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 )
 
@@ -31,8 +32,25 @@ func handlePolls(w http.ResponseWriter, r *http.Request) {
 }
 
 func handlePollsGet(w http.ResponseWriter, r *http.Request) {
-	respondErr(w, r, http.StatusInternalServerError, errors.New("未実装です"))
+	db := GetVar(r, "db").(*mgo.Database)
+	c := db.C("polls")
+	var q *mgo.Query
+	p := NewPath(r.URL.Path)
+	if p.HasID() {
+		// 特定の調査項目の詳細
+		q = c.FindId(bson.ObjectIdHex(p.ID))
+	} else {
+		// すべての調査項目のリスト
+		q = c.Find(nil)
+	}
+	var result []*poll
+	if err := q.All(&result); err != nil {
+		respondErr(w, r, http.StatusInternalServerError, err)
+		return
+	}
+	respond(w, r, http.StatusOK, &result)
 }
+
 func handlePollsPost(w http.ResponseWriter, r *http.Request) {
 	respondErr(w, r, http.StatusInternalServerError, errors.New("未実装です"))
 }
