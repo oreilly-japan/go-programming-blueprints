@@ -64,6 +64,19 @@ func main() {
 		})
 
 	case "add":
+		if len(args[1:]) == 0 {
+			fatalErr = errors.New("追加するパスを指定してください")
+			return
+		}
+		for _, p := range args[1:] {
+			path := &path{Path: p, Hash: "まだアーカイブされていません"}
+			if err := col.InsertJSON(path); err != nil {
+				fatalErr = err
+				return
+			}
+			fmt.Printf("+ %s\n", path)
+		}
+
 	case "remove":
 	}
 
