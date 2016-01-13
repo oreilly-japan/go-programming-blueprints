@@ -7,4 +7,4 @@ type Tracer interface {
 	Trace(...interface{})
 }
 
-func New(w io.Writer) {}
+func New(w io.Writer) Tracer {}
