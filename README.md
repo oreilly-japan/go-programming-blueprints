@@ -12,6 +12,10 @@
 
 サンプルコードの解説は本書籍をご覧ください。
 
+[version1ブランチ](../../tree/version1)の[変更履歴](../../commits/version1)で本書籍の途中のコードを参照することができます。
+
+原書のサンプルコードは[github.com/matryer/goblueprints](https://github.com/matryer/goblueprints)でアクセスできます。
+
 ## 正誤表
 
 まだありません。誤植など間違いを見つけた方は、japan＠oreilly.co.jpまでお知らせください。
