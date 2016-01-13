@@ -8,6 +8,11 @@ import (
 	"github.com/oreilly-japan/go-programming-blueprints/chapter8/backup"
 )
 
+type path struct {
+	Path string
+	Hash string
+}
+
 func main() {
 	var fatalErr error
 	defer func() {
