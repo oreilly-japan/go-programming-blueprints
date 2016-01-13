@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"net/http"
+	"os"
 	"runtime"
 
 	"github.com/oreilly-japan/go-programming-blueprints/chapter7/meander"
@@ -10,7 +11,7 @@ import (
 
 func main() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
-	//meander.APIKey = "TODO"
+	meander.APIKey = os.Getenv("GOOGLE_PLACES_API_KEY")
 	http.HandleFunc("/journeys", func(w http.ResponseWriter, r *http.Request) {
 		respond(w, r, meander.Journeys)
 	})
