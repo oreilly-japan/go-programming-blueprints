@@ -38,3 +38,33 @@ GowebやGorillzによるmuxパッケージなどは、
 GowebやGorillaによるmuxパッケージなどは、
 ```
 
+### 第2刷をお持ちの方
+
+#### p.73 2行目
+
+誤
+
+```
+io.WriteString(m, strings.ToLower(user.Name()))
+```
+
+正
+
+```
+io.WriteString(m, strings.ToLower(user.Email()))
+```
+
+#### p.86 13行目
+
+誤
+
+```
+io.WriteString(m, strings.ToLower(user.Name()))
+```
+
+正
+
+```
+io.WriteString(m, strings.ToLower(user.Email()))
+```
+
