@@ -81,6 +81,4 @@ io.WriteString(m, strings.ToLower(user.Name()))
 ```
 io.WriteString(m, strings.ToLower(user.Email()))
 ```
-[](
-test
-)
+
