@@ -22,77 +22,162 @@
 
 誤植など間違いを見つけた方は、japan＠oreilly.co.jpまでお知らせください。
 
-### 第1刷をお持ちの方（2刷以降では修正済み）
+### 第3刷まで
 
-#### p.158 ノート記事の1行目
-
-誤
-
-```
-GowebやGorillzによるmuxパッケージなどは、
-```
-
-正
+#### ■p.106 12行目
+**誤**
 
 ```
-GowebやGorillaによるmuxパッケージなどは、
+log.Fatalf("%qに類語はありませんでした\n")
 ```
 
-### 第2刷をお持ちの方
+**正**
 
-#### p.36, 41, 46, 49, 50, 53, 61, 63, 77, 88のコマンド
+```
+log.Fatalf("%qに類語はありませんでした\n", word)
+```
 
-誤
+#### ■p.186 29行目
+**誤**
+
+```
+package meander 
+type Place struct { 
+  *googleGeometry `json:"geometry"` 
+  Name string `json:"name"` 
+  Icon string `json:"icon"` 
+  Photos []*googlePhoto `json:"photos"` 
+  Vicinity string `json:"vicinity"` 
+} 
+type googleResponse struct { 
+  Results []*Place `json:"results"` 
+} 
+type googleGeometry struct { 
+  *googleLocation `json:"location"` 
+} 
+type googleLocation struct { 
+  Lat float64 `json:"lat"` 
+  Lng float64 `json:"lng"` 
+} 
+type googlePhoto struct { 
+  PhotoRef string `json:"photo_reference"` 
+  URL string `json:"url"` 
+} 
+```
+
+**正**
+
+```
+package meander
+type Place struct {
+  Geometry *googleGeometry `json:"geometry"`
+  Name     string          `json:"name"`
+  Icon     string          `json:"icon"`
+  Photos   []*googlePhoto  `json:"photos"`
+  Vicinity string          `json:"vicinity"`
+}
+type googleResponse struct {
+  Results []*Place `json:"results"`
+}
+type googleGeometry struct {
+  Location *googleLocation `json:"location"`
+}
+type googleLocation struct {
+  Lat float64 `json:"lat"`
+  Lng float64 `json:"lng"`
+}
+type googlePhoto struct {
+  PhotoRef string `json:"photo_reference"`
+  URL      string `json:"url"`
+}
+
+```
+
+#### ■p.187 31行目
+**誤**
+
+```
+    "lat": p.Lat,
+    "lng": p.Lng,
+```
+
+**正**
+
+```
+    "lat": p.Geometry.Location.Lat,
+    "lng": p.Geometry.Location.Lng,
+```
+
+### 第2刷まで
+
+#### ■p.36, 41, 46, 49, 50, 53, 61, 63, 77, 88のコマンド
+
+**誤**
 
 ```
 ./chat -host=":8080"
 ```
 
-正
+**正**
 
 ```
 ./chat -addr=":8080"
 ```
 
-#### p.24 3行目
+#### ■p.24 3行目
 
-誤
+**誤**
 
 ```
 必要な最小限のコードをtrace.goに追加します。
 ```
 
-正
+**正**
 
 ```
 必要な最小限のコードをtracer.goに追加します。
 ```
 
-#### p.73 2行目
+#### ■p.73 2行目
 
-誤
-
-```
-io.WriteString(m, strings.ToLower(user.Name()))
-```
-
-正
-
-```
-io.WriteString(m, strings.ToLower(user.Email()))
-```
-
-#### p.86 13行目
-
-誤
+**誤**
 
 ```
 io.WriteString(m, strings.ToLower(user.Name()))
 ```
 
-正
+**正**
 
 ```
 io.WriteString(m, strings.ToLower(user.Email()))
 ```
 
+#### ■p.86 13行目
+
+**誤**
+
+```
+io.WriteString(m, strings.ToLower(user.Name()))
+```
+
+**正**
+
+```
+io.WriteString(m, strings.ToLower(user.Email()))
+```
+
+### 第1刷
+
+#### ■p.158 ノート記事の1行目
+
+**誤**
+
+```
+GowebやGorillzによるmuxパッケージなどは、
+```
+
+**正**
+
+```
+GowebやGorillaによるmuxパッケージなどは、
+```
